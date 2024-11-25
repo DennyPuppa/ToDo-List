@@ -19,7 +19,6 @@ task.get('/task/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
         const task = await TaskModel.findById(id)
-        console.log(task)
         res.status(200).json(task);
     } catch (error) {
         // res.status(500).json({ message: err.message });
