@@ -4,6 +4,10 @@ import SingleTask from '../singleTask/SingleTask';
 function AllTasks() {
 
     const [allTasks, setAllTasks] = useState([])
+    const [isDelete, setIsDelete] = useState(false)
+
+    // const [showDelete, setShowDelete] = useState(false);
+    // const toggleDelete = () => setShowDelete(!showDelete);
 
     const getAllTasks = async () => {
         try {
@@ -20,7 +24,7 @@ function AllTasks() {
 
     useEffect(() => {
         getAllTasks()
-    }, [])
+    }, [isDelete])
 
 
     return (
@@ -32,6 +36,8 @@ function AllTasks() {
                     name={task.name}
                     data={task.data}
                     complete={task.complete}
+                    deleteValue={isDelete}
+                    deleteValueSet={setIsDelete}
                 />
 
             )).reverse()}
